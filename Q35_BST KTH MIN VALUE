@@ -1,0 +1,45 @@
+M DAMODARAM 192211238
+#include<iostream>
+using namespace std;
+class node{
+   public:
+      node *left;
+      int val;
+      node *right;
+};
+node *bst = NULL;
+node *getNode(){
+   node *newNode;
+   newNode = new node;
+   return newNode;
+}
+void insert(node **root, int key){
+   node *newNode;
+   newNode = getNode();
+   newNode->val = key; newNode->left = NULL; newNode->right = NULL;
+   if(*root == NULL){
+      *root = newNode;
+      return;
+   } else {
+      if(key < (*root)->val)
+      insert(&((*root)->left), key);
+   else
+      insert(&((*root)->right), key);
+   }
+}
+int minElement(){
+   node* current = bst;
+   while (current->left != NULL) {
+      current = current->left;
+   }
+   return(current->val);
+}
+main(){
+   int item[] = {3, 2, 1, 6, 5, 8};
+   int n = sizeof(item)/sizeof(item[0]);
+   int i;
+   for(i = 0; i<8; i++){
+      insert(&bst, item[i]);
+   }
+   cout << "Minimum element is: " << minElement();
+}
