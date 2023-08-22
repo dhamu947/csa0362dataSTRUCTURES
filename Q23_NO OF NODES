@@ -1,0 +1,108 @@
+M DAMODARAM 192211238
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+#include <stdio.h>
+ 
+//linked list node structure
+struct node{
+ 
+    int data;
+    struct node* next;
+};
+ 
+struct node* head;
+ 
+void insert(int data){
+ 
+    /* Allocate memory*/
+    struct node* temp = (struct node*)malloc(sizeof(struct node));
+ 
+    temp->data = data;
+    temp->next = head;
+ 
+    head = temp;
+ 
+}
+ 
+void print(){
+ 
+    struct node* temp = head;
+ 
+    int count=0;
+ 
+    /* Traverse the linked list and maintain the count. */
+ 
+    while(temp != NULL){
+ 
+       temp = temp->next;
+       count++;
+ 
+    }
+ 
+    printf("\n Total no. of nodes is %d",count);
+ 
+}
+ 
+void main(){
+ 
+    head = NULL;
+ 
+    insert(2);
+    insert(4);
+ 
+    /* calling print function to print the count of node. */
+    print();
+ 
+}
